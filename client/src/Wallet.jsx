@@ -1,6 +1,7 @@
 import server from "./server";
+import {USERS_KEYS} from "./Transfer.jsx";
 
-function Wallet({ address, setAddress, balance, setBalance }) {
+function Wallet({ setAddress, balance, setBalance }) {
   async function onChange(evt) {
     const address = evt.target.value;
     setAddress(address);
@@ -20,7 +21,12 @@ function Wallet({ address, setAddress, balance, setBalance }) {
 
       <label>
         Wallet Address
-        <input placeholder="0x1" value={address} onChange={onChange}></input>
+        <select onChange={onChange}>
+          <option value="">Please choose an option</option>
+          {USERS_KEYS.map((user) => {
+            return <option key={user.publicKey} value={user.publicKey}>{user.name}</option>
+          })}
+        </select>
       </label>
 
       <div className="balance">Balance: {balance}</div>

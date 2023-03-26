@@ -12,7 +12,6 @@ function App() {
       <Wallet
         balance={balance}
         setBalance={setBalance}
-        address={address}
         setAddress={setAddress}
       />
       <Transfer setBalance={setBalance} address={address} />
