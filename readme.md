@@ -29,3 +29,10 @@ The server folder contains a node.js server using [express](https://expressjs.co
 The application should connect to the default server port (3042) automatically! 
 
 _Hint_ - Use [nodemon](https://www.npmjs.com/package/nodemon) instead of `node` to automatically restart the server on any changes.
+
+### Use the application
+
+Wallet address that can be used:
+1. "64989cd89d40ce0bced1bcefa22b223d97b337be": initial balance 100
+2. "bfa4825ade0609746269ddc17d1e5e656371bc3b": initial balance 50
+3. "80dee9a0e8381528f2f52be13cbff2fe035a9d71": initial balance 75

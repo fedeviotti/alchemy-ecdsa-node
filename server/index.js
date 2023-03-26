@@ -24,9 +24,9 @@ async function recoverKey(message, signature, recoveryBit) {
 }
 
 const balances = {
-  "64989cd89d40ce0bced1bcefa22b223d97b337be": 100, // Fede
-  "bfa4825ade0609746269ddc17d1e5e656371bc3b": 50, // Rick
-  "80dee9a0e8381528f2f52be13cbff2fe035a9d71": 75, // Gio
+  "64989cd89d40ce0bced1bcefa22b223d97b337be": 100,
+  "bfa4825ade0609746269ddc17d1e5e656371bc3b": 50,
+  "80dee9a0e8381528f2f52be13cbff2fe035a9d71": 75,
 };
 
 app.get("/balance/:address", (req, res) => {
