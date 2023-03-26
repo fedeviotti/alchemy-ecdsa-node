@@ -30,7 +30,8 @@ function Transfer({ setBalance }) {
   async function transfer(evt) {
     evt.preventDefault();
 
-    const signature = await signMessage("Hello world");
+    const message = `I am sending ${sendAmount} to ${recipient}`;
+    const signature = await signMessage(message);
 
     // By default, axios serializes JavaScript objects to JSON.
     // docs: https://axios-http.com/docs/urlencoded
@@ -41,6 +42,7 @@ function Transfer({ setBalance }) {
         signature,
         amount: parseInt(sendAmount),
         recipient,
+        message,
       });
       setBalance(balance);
     } catch (ex) {

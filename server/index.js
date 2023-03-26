@@ -37,10 +37,10 @@ app.get("/balance/:address", (req, res) => {
 
 app.post("/send", async (req, res) => {
   // get address from signature
-  const { signature: [sig, recoveryBit], recipient, amount  } = req.body;
+  const { signature: [sig, recoveryBit], recipient, amount, message  } = req.body;
   // sig is converted back to Uint8Array
   const parsedSig = new Uint8Array(Object.values(sig));
-  const publicKey = await recoverKey("Hello world", parsedSig, recoveryBit);
+  const publicKey = await recoverKey(message, parsedSig, recoveryBit);
   const sender = toHex(getAddress(publicKey));
 
   setInitialBalance(sender);
