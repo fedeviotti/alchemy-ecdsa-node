@@ -1,7 +1,7 @@
 import { useState } from "react";
 import server from "./server";
 import * as secp from "ethereum-cryptography/secp256k1";
-import { toHex, utf8ToBytes } from "ethereum-cryptography/utils";
+import { utf8ToBytes } from "ethereum-cryptography/utils";
 import { keccak256 } from "ethereum-cryptography/keccak";
 
 const PRIVATE_KEYS = {
@@ -30,16 +30,15 @@ function Transfer({ setBalance }) {
   async function transfer(evt) {
     evt.preventDefault();
 
-    const [sig, recoveryBit] = await signMessage("Hello world");
+    const signature = await signMessage("Hello world");
 
+    // By default, axios serializes JavaScript objects to JSON.
+    // docs: https://axios-http.com/docs/urlencoded
     try {
       const {
         data: { balance },
       } = await server.post(`send`, {
-        signature: [
-          toHex(sig),
-          recoveryBit,
-        ],
+        signature,
         amount: parseInt(sendAmount),
         recipient,
       });
